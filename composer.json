@@ -1,0 +1,43 @@
+{
+  "name": "eubourne/laravel-mailgun",
+  "description": "Laravel Mailgun driver.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [ "laravel", "mailgun", "mailer", "email" ],
+  "authors": [
+    {
+      "name": "Eugene Bourne",
+      "email": "bourne.eugene@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "mailgun/mailgun-php": "^4.3",
+    "nyholm/psr7": "^1.8",
+    "symfony/mailer": "^7.1",
+    "illuminate/mail": "^11.33",
+    "psr/http-client": "^1.0",
+    "laravel/prompts": "^0.3.2",
+    "illuminate/console": "^11.33",
+    "illuminate/validation": "^11.33",
+    "symfony/var-dumper": "^7.1",
+    "illuminate/config": "^11.33"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "autoload": {
+    "psr-4": { "EuBourne\\LaravelMailgun\\": "src/" }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "EuBourne\\LaravelMailgun\\MailgunServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
