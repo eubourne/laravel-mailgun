@@ -93,7 +93,7 @@ class MailSendCommand extends CommandAbstract implements PromptsForMissingInput
         return [
             'address' => $this->argument('address'),
             'subject' => $this->option('subject') ?? "{$this->config->get('app.name')} Test Email",
-            'body' => $this->option('body') ?? 'This is a test email',
+            'body' => $this->option('body') ?? '<h1>This is a test email</h1>',
             'from' => $this->parseEmailAddress($this->option('from'))
                 ?: $this->getDefaultFromAddress($mailer),
             'cc' => $this->option('cc') ?? [],

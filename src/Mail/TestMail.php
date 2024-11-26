@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Support\Arr;
 
 class TestMail extends Mailable
 {
@@ -35,8 +36,19 @@ class TestMail extends Mailable
      */
     public function content(): Content
     {
+        $content = Arr::get($this->attributes, 'body') ?: 'Test email';
+        $content .= '<hr/>';
+
+        if ($mailer = Arr::get($this->attributes, 'mailer')) {
+            $content .= '<small style="color: #777">Mailer:</small>&nbsp;' . $mailer;
+        }
+
+        if ($queue = Arr::get($this->attributes, 'queue')) {
+            $content .= '<br/><small style="color: #777">Queue:</small>&nbsp;' . $queue;
+        }
+
         return new Content(
-            htmlString: $this->attributes['body'],
+            htmlString: $content,
         );
     }
 }
