@@ -66,6 +66,40 @@ When sending a mailable, specify your custom mailer:
 ```php
 Mail::mailer('mailgun-tx')->to($user)->send(new OrderShipped($order));
 ```
+
+#### Setting a Default Mailer for a Mailable
+If you want to always send a specific mailable using a particular mailer,
+you can define it with a public `$mailer` property in your mailable class:
+
+```php
+class OrderPlaced extends Mailable
+{
+    public $mailer = 'transactional';
+    ...
+}
+```
+
+Alternatively, you can use the `mailer($mailerName)` method on your mailable 
+instance to set the mailer dynamically at runtime:
+```php
+$mailable = new OrderPlaced();
+$mailable->mailer('transactional');
+Mail::to($user)->send($mailable);
+```
+
+**Important Notes:**
+
+* The mailer specified with the `mailer` property or `mailer()` method
+will override the mailer used to initiate the send operation. 
+* For instance, the following code will send the email using the `transactional` mailer,
+even though the `promotional` mailer is used to send the email:
+```php
+$mailable = new OrderPlaced();
+$mailable->mailer('transactional');
+Mail::mailer('promotional')->to($user)->send($mailable);
+```
+This flexibility allows you to set a default mailer for each mailable while retaining the ability to override it dynamically.
+
 ---
 
 ## Utilities
