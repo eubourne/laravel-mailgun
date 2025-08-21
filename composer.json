@@ -15,13 +15,13 @@
     "mailgun/mailgun-php": "^4.3",
     "nyholm/psr7": "^1.8",
     "symfony/mailer": "^7.1",
-    "illuminate/mail": "^11.33",
+    "illuminate/mail": "^11.33|^12.25",
     "psr/http-client": "^1.0",
     "laravel/prompts": "^0.3.2",
-    "illuminate/console": "^11.33",
-    "illuminate/validation": "^11.33",
+    "illuminate/console": "^11.33|^12.25",
+    "illuminate/validation": "^11.33|^12.25",
     "symfony/var-dumper": "^7.1",
-    "illuminate/config": "^11.33"
+    "illuminate/config": "^11.33|^12.25"
   },
   "config": {
     "allow-plugins": {
